@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Sort Puzzle</title>
+
+  <!-- Шрифти (за відсутності інтернету застосуються системні) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1 class="title">Ball Sort Puzzle</h1>
+      <p class="subtitle">Збери кулі одного кольору в одну колбу</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat__label">Ходи</span>
+          <span class="stat__value" id="moves">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Час</span>
+          <span class="stat__value" id="time">00:00</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Рекорд</span>
+          <span class="stat__value" id="record">&mdash;</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Ігрове поле з колбами малюється скриптом -->
+    <section id="board" class="board"></section>
+
+    <p id="status" class="status">Оберіть колбу, щоб зробити хід</p>
+
+    <div class="controls">
+      <button id="btn-new" class="btn btn--primary">Нова гра</button>
+      <button id="btn-restart" class="btn">Заново</button>
+      <button id="btn-undo" class="btn">Скасувати</button>
+      <button id="btn-hint" class="btn">Підказка</button>
+    </div>
+
+    <div class="segmented">
+      <button class="diff-btn" data-difficulty="easy">Легко</button>
+      <button class="diff-btn" data-difficulty="medium">Середньо</button>
+      <button class="diff-btn" data-difficulty="hard">Складно</button>
+    </div>
+  </main>
+
+  <!-- Екран перемоги -->
+  <div id="win" class="win win--hidden">
+    <div class="win__card">
+      <h2 class="win__title">Рівень пройдено</h2>
+      <p class="win__text">
+        <span id="win-moves">0</span> ходів &middot; час <span id="win-time">00:00</span>
+      </p>
+      <button id="btn-win-next" class="btn btn--primary">Грати далі</button>
+    </div>
+  </div>
+
+  <!-- Підключення модулів програми -->
+  <script src="js/game.js"></script>
+  <script src="js/solver.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
